@@ -1,13 +1,18 @@
-USE codeip_test_db;
+USE codeup_test_db;
+SELECT 'The name of all albums by Pink Floyed' AS 'Exercise 1';
+SELECT album_name FROM albums WHERE artist = 'Pink Floyed';
 
-SELECT album_name WHERE artist = 'Pink Floyed';
+SELECT 'The release date of Sgt. Peppers Lonely Hearts Club Band' AS 'Exercise 2';
+SELECT release_date FROM albums WHERE album_name = 'Sgt. Peppers Lonely Hearts Club Band';
 
-SELECT release_date WHERE album_name = 'Sgt. Peppers Lonely Hearts Club Band';
+SELECT 'The genre of the Nirvana album Nevermind' AS 'Exercise 3';
+SELECT genre FROM albums WHERE album_name = 'Nevermind';
 
-SELECT genre WHERE album_name = 'Nevermind';
+SELECT 'All albums released in the 90s' AS 'Exercise 4';
+SELECT album_name FROM albums WHERE release_date BETWEEN 1990 AND 1999;
 
-SELECT album_name WHERE release_date >= 1990;
+SELECT 'All albums where sales were below 20 million' AS 'Exercise 4';
+SELECT album_name From albums WHERE sales < 20.0;
 
-SELECT album_name WHERE sales < 20.0;
-
-SELECT album_name WHERE genre = 'Rock';
+SELECT 'All albums with the genre rock' AS 'Exercise 5';
+SELECT album_name From albums WHERE genre LIKE '%Rock%';
