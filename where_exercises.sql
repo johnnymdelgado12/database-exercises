@@ -44,12 +44,10 @@ WHERE first_name = 'Irena' OR first_name = 'Vidya' OR first_name = 'Maya';
 -- Add a condition to the previous query to find everybody with those names who is also male — 441 rows.
 SELECT *
 FROM employees
-WHERE first_name = 'Irena'
-AND (gender = 'M')
+WHERE (first_name = 'Irena'
 OR first_name = 'Vidya'
-AND (gender = 'M')
-OR first_name = 'Maya'
-AND (gender = 'M');
+OR first_name = 'Maya')
+AND gender = 'M';
 
 
 
@@ -57,14 +55,14 @@ AND (gender = 'M');
 SELECT *
 FROM employees
 WHERE last_name LIKE 'E%'
-OR last_name REGEXP "e$";
+OR last_name LIKE '%E';
 
 
 -- Duplicate the previous query and update it to find all employees whose last name starts and ends with 'E' — 899 rows.
 SELECT *
 FROM employees
 WHERE last_name LIKE 'E%'
-AND (last_name REGEXP "e$");
+AND (last_name LIKE '%E');
 
 
 
