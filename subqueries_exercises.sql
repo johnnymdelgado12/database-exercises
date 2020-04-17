@@ -14,27 +14,36 @@ SELECT first_name, last_name, hire_date
 # Find all the titles held by all employees with the first name Aamod.
 # 314 total titles, 6 unique titles
 
-SELECT title, first_name
+SELECT title
 FROM titles
 WHERE emp_no IN(
     SELECT emp_no
     FROM employees
-    WHERE titles.emp_no = employees.emp_no
-    )
-  AND employees.first_name = 'Aamod';
+    WHERE employees.first_name = 'Aamod'
+    );
 
 
 
-
-
-SELECT title, first_name
+SELECT emp_no
 FROM employees
-JOIN titles t
-    on employees.emp_no = t.emp_no
-WHERE t.emp_no IN (
-    SELECT t.emp_no
-    FROM titles
-    JOIN employees e
-        on titles.emp_no = e.emp_no
-    WHERE first_name = 'Aamod'
+WHERE first_name = 'Aamod';
+
+
+# Find all the current department managers that are female.
+# +------------+------------+
+# | first_name | last_name  |
+# +------------+------------+
+# | Isamu      | Legleitner |
+# | Karsten    | Sigstam    |
+# | Leon       | DasSarma   |
+# | Hilary     | Kambil     |
+# +------------+------------+
+
+SELECT first_name, last_name
+FROM employees
+WHERE emp_no IN (
+    SELECT emp_no
+    FROM dept_manager
+    WHERE gender = 'F'
+    AND to_date > CURDATE()
     );
